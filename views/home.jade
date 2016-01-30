@@ -11,7 +11,7 @@ block content
                small Profile
                pre #{user}
             else
-               | Not logged in!
+               | Not logged in
 
       .col-md-7
          .well
@@ -22,7 +22,7 @@ block content
                      textarea.form-control(rows='4' name='content')
                   input.btn.btn-default(type='submit' value='Send post' formaction='/api/posts')
             else
-               h4.text-center <a href="/auth/login">Authenticate</a> to start posting!
+               h4.text-center <a href="/auth/login">Log in</a> or <a href="/auth/signup">create a new account</a> and begin posting!
          ul.post-list
             each post in posts
                li

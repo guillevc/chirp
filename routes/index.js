@@ -15,6 +15,7 @@ router.use('/api', require('./api'));
 
 /**
  * Get all posts, ordered by createdAt attribute
+ * and render home page.
  */
 router.get('/', (req, res, next) => {
   Post.find()

@@ -12,6 +12,7 @@ router.get('/posts', (req, res) => {
 });
 
 router.post('/posts', (req, res, next) => {
+  //TODO: validate input
   const newPost = new Post({
     content: req.body.content.trim(),
     author: req.user._id

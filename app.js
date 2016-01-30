@@ -14,6 +14,7 @@ const methodOverride = require('method-override');
 const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const MongoStore = require('connect-mongo/es5')(session);
 //const csrf = require('csurf');
 const config = require('./config/vars');
 
@@ -52,7 +53,10 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   secret: config.sessionSecret,
-  //store: new MongoStore
+  store: new MongoStore({
+    url: config.mongodb,
+    autoReconnect: true
+  })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
