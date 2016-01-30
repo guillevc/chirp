@@ -1,0 +1,32 @@
+extends layout
+
+block vars
+   - var title = 'Home'
+
+block content
+   .row
+      .col-md-3
+         h2
+            if user
+               small Profile
+               pre #{user}
+            else
+               | Not logged in!
+
+      .col-md-7
+         .well
+            if user
+               h4 What's happening?
+               form(method='post')
+                  .form-group
+                     textarea.form-control(rows='4' name='content')
+                  input.btn.btn-default(type='submit' value='Send post' formaction='/api/posts')
+            else
+               h4.text-center <a href="/auth/login">Authenticate</a> to start posting!
+         ul.post-list
+            each post in posts
+               li
+                  h4
+                     a(href='/users/'+'#{post.author._id}') #{post.author.username}
+                     small  on #{post.createdAt}
+                  p #{post.content}

@@ -1,0 +1,42 @@
+block vars
+doctype html
+html(lang='en')
+   head
+      meta(charset='utf-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+      title #{title} - CHIRP
+      script(src='https://code.jquery.com/jquery-2.2.0.min.js')
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>   
+      link(rel='stylesheet' href='/css/main.css')
+   body
+      nav.navbar.navbar-default.navbar-static-top
+         .container
+            .navbar-header
+               button.navbar-toggle(type='button' data-toggle='collapse' data-target='#navbar-collapse-1')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+               a.navbar-brand(href='/')
+                  | Brand
+            .collapse.navbar-collapse#navbar-collapse-1
+               ul.nav.navbar-nav
+                  li(class=title=='Home'? 'active' : undefined)
+                     a(href='/') Home
+               ul.nav.navbar-nav.navbar-right
+                  if !user
+                     li(class=title=='Log In'? 'active' : undefined)
+                        a(href='/auth/login') Log In
+                     li(class=title=='Sign Up'? 'active' : undefined)
+                        a(href='/auth/signup') Sign Up
+                  else
+                     li
+                        a(href='/auth/logout') Log Out
+
+      .container
+         block content

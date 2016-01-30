@@ -1,0 +1,9 @@
+extends layout
+
+block vars
+   - var title = message
+
+block content
+
+   h1 #{error.status} #{message}
+   pre #{error.stack}
