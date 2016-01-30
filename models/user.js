@@ -6,7 +6,13 @@ const bcrypt = require('bcryptjs');
 const userSchema = new mongoose.Schema({
 	username: { type: String, minlength: 3, maxlength: 35, required: true, unique: true },
 	password: { type: String, minlength: 4, required: true },
-	createdAt: { type: Date, default: Date.now },
+	profile: {
+		fullname: { type: String, default: '' },
+		gender: { type: String, enum: ['male', 'female'], default: 'male' },
+		location: { type: String, default: '' },
+		website: { type: String, default: '' },
+	},
+	created_at: { type: Date, default: Date.now },
 });
 
 /**
@@ -33,7 +39,6 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 		if (err) {
 			cb(err);
 		} else {
-			console.log('comparepassword = ' + res);
 			cb(null, res);
 		}
 	});

@@ -11,11 +11,11 @@ const postSchema = new mongoose.Schema({
 		required: true,
 		//maxlength: 141,
 	},
-	createdAt: {
+	created_at: {
 		type: Date,
 		default: Date.now,
 	},
-	updatedAt: {
+	updated_at: {
 		type: Date,
 		default: Date.now,
 	}
