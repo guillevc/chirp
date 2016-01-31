@@ -14,12 +14,12 @@ router.use('/api', require('./api'));
 
 
 /**
- * Get all posts, ordered by created_at attribute
- * and render home page.
+ * Get all posts, ordered by createdAt attribute
+ * and render home view.
  */
 router.get('/', (req, res, next) => {
   Post.find()
-    .sort('-created_at')
+    .sort('-createdAt')
     .exec((err, posts) => {
       if (err) return next(err);
       User.populate(posts, {path: 'author'}, (err, posts) => {

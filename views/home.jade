@@ -9,12 +9,12 @@ block content
          h2
             if user
                small Profile
-               pre #{user}
+               pre #{user.jsonString}
             else
                | Not logged in
 
       .col-md-7
-         .well
+         .well.newpost-well
             if user
                h4 What's happening?
                form(method='post')
@@ -28,5 +28,5 @@ block content
                li
                   h4
                      a(href='/users/'+'#{post.author._id}') #{post.author.username}
-                     small  on #{post.created_at}
+                     small  on #{post.createdAt}
                   p #{post.content}

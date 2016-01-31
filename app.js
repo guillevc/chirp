@@ -64,10 +64,13 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 //app.use(csrf());
 
 /**
- * Custom middleware and load routes
+ * User data to req.locals and load routes
  */
  app.use((req, res, next) => {
-   res.locals.user = req.user;
+   if (req.user) {
+     res.locals.user = req.user;
+     res.locals.user.jsonString = JSON.stringify(req.user, null, 2);
+   }
    next();
  });
 app.use(require('./routes'));
