@@ -6,15 +6,18 @@ html(lang='en')
       meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
       title #{title} — CHIRP
       script(src='https://code.jquery.com/jquery-2.2.0.min.js')
-      <!-- Latest compiled and minified CSS -->
+      // Bootstrap: Latest compiled and minified CSS
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-      <!-- Optional theme -->
+      // Bootstrap: Optional theme
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      // Font Awesome
+      link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==", crossorigin="anonymous")
+      // main.css
       link(rel='stylesheet' href='/css/main.css')
    body
-      nav.navbar.navbar-default.navbar-static-top
+      nav.navbar.navbar-default.navbar-fixed-top
          .container
             .navbar-header
                button.navbar-toggle(type='button' data-toggle='collapse' data-target='#navbar-collapse-1')
@@ -23,6 +26,7 @@ html(lang='en')
                   span.icon-bar
                   span.icon-bar
                a.navbar-brand(href='/')
+                  i.fa.fa-cubes.fa-lg
                   | Chirp
             .collapse.navbar-collapse#navbar-collapse-1
                ul.nav.navbar-nav
@@ -30,9 +34,9 @@ html(lang='en')
                      a(href='/') Home
                ul.nav.navbar-nav.navbar-right
                   if !user
-                     li(class=title=='Log In'? 'active' : undefined)
+                     li(class= title=='Log In' ? 'active' : undefined)
                         a(href='/auth/login') Log In
-                     li(class=title=='Sign Up'? 'active' : undefined)
+                     li(class= title=='Sign Up' ? 'active' : undefined)
                         a(href='/auth/signup') Sign Up
                   else
                      li
@@ -40,12 +44,13 @@ html(lang='en')
 
       .container
          block content
-
-      .container.text-center
-         //p.pull-left © 2016 Company, Inc. All Rights Reserved
-         ul.pull-right.list-inline
-            li
-               a(href='https://github.com/guillevc/chirp') GitHub Project
-            //
+         
+      footer
+         .container.text-center
+            //p.pull-left © 2016 Company, Inc. All Rights Reserved
+            ul.pull-right.list-inline
                li
-                  a(href='https://github.com/sahat/hackathon-starter/issues') Issues
+                  a(href='https://github.com/guillevc/chirp') GitHub Project
+               //
+                  li
+                     a(href='https://github.com/sahat/hackathon-starter/issues') Issues
