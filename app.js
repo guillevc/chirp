@@ -67,10 +67,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * User data to req.locals and load routes
  */
  app.use((req, res, next) => {
-   if (req.user) {
-     res.locals.user = req.user;
-     res.locals.user.jsonString = JSON.stringify(req.user, null, 2);
-   }
+   res.locals.user = req.user;
    next();
  });
 app.use(require('./routes'));

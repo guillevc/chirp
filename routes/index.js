@@ -25,7 +25,8 @@ router.get('/', (req, res, next) => {
       User.populate(posts, {path: 'author'}, (err, posts) => {
         if (err) return next(err);
         res.render('home', {
-          posts: posts
+          posts: posts,
+          moment: require('moment')
         });
     });
   });

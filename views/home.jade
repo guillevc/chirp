@@ -14,7 +14,7 @@ block content
                | Not logged in
 
       .col-md-7
-         .well.newpost-well
+         .well.newpost-input-well
             if user
                h4 What's happening?
                form(method='post')
@@ -28,5 +28,6 @@ block content
                li
                   h4
                      a(href='/users/'+'#{post.author._id}') #{post.author.username}
-                     small  on #{post.createdAt}
+                     small.text-lowercase  #{moment(post.createdAt).calendar()}
                   p #{post.content}
+                  pre #{post}
