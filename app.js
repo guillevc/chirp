@@ -86,6 +86,9 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(err, req, res, next) { //jshint ignore:line
+  if (err.name === 'ValidationError' && !err.status) {
+    err.status = 400;
+  }
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
