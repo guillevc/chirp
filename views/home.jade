@@ -9,7 +9,7 @@ block content
          h2
             if user
                small Profile
-               pre #{user.jsonString}
+               pre #{JSON.stringify(user, null, 2)}
             else
                | Not logged in
 
@@ -30,4 +30,4 @@ block content
                      a(href='/users/'+'#{post.author._id}') #{post.author.username}
                      small.text-lowercase  #{moment(post.createdAt).calendar()}
                   p #{post.content}
-                  pre #{post}
+                  pre #{JSON.stringify(post, null, 2)}
