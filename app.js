@@ -88,8 +88,10 @@ app.use(function(err, req, res, next) { //jshint ignore:line
   }
   res.status(err.status || 500);
   res.render('error', {
+    status: err.status,
+    name: err.name,
     message: err.message,
-    error: app.get('env') === 'development'? err : {},
+    stack: app.get('env') === 'development'? err.stack : null,
   });
 });
 
