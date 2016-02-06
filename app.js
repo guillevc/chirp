@@ -1,6 +1,8 @@
 'use strict';
 
+// Load env vars from .env file
 require('dotenv').load({ path: '.env' });
+
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -8,13 +10,13 @@ const express = require('express');
 const morgan = require('morgan');
 const session = require('express-session');
 const methodOverride = require('method-override');
-//const debug
 //const validator = require('express-validator');
-//const errorHandler = require('errorhandler');
 const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const MongoStore = require('connect-mongo/es5')(session);
+const sass = require('node-sass-middleware');
+//const compression = require('compression');
 //const csrf = require('csurf');
 const config = require('./config/vars');
 
@@ -44,6 +46,12 @@ app.use(morgan('dev'));
 //if (config.env === 'development') app.use(morgan('dev'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+//app.use(compression());
+app.use(sass({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  sourceMap: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
