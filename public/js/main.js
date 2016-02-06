@@ -1,11 +1,12 @@
+(function() {
 'use strict';
 
-(function() {
-//$(document).ready(function() {
+$('.post-list > li')
+  .on('click', function() {
+    $(this).children('pre').slideToggle();
+  })
+  .children('a').on('click', function(e) {
+    e.stopPropagation();
+  });
 
-$('.post-list > li').on('click', function() {
-  $(this).children('pre').slideToggle();
-});
-
-//});
 })(jQuery);

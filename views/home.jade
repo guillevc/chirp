@@ -28,6 +28,6 @@ block content
                li
                   h4
                      a(href='/users/'+'#{post.author._id}') #{post.author.username}
-                     small.text-lowercase  #{moment(post.createdAt).calendar()}
+                     small  #{moment(post.createdAt).fromNow()}
                   p #{post.content}
                   pre #{JSON.stringify(post, null, 2)}
