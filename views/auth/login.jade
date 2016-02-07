@@ -9,11 +9,13 @@ block content
       .panel.panel-default
          .panel-heading
             h4.panel-title Log into your account
-         form.panel-body(method='post')
+         form.panel-body(method='POST')
             div.form-group
                label(for='username-input') Username
                input.form-control(type='text' id='username-input' name='username' placeholder='Username' required=true autofocus)
             div.form-group
                label(for='password-input') Password
                input.form-control(type='password' id='password-input' name='password' placeholder='Password' required=true)
-            input.btn.btn-default(type='submit' value='Log in')
+            button.btn.btn-primary(type='submit')
+               i.fa.fa-user
+               | Log in

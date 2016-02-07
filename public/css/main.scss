@@ -2,6 +2,10 @@
 @import "bootstrap/bootstrap";
 @import "themes/default/default";
 
+$post-background-color: #f5f8fa;
+$darker: #BFE0EC;
+//$default-background-color: #f5f5f5;
+
 // Scaffolding
 // -------------------------
 
@@ -30,6 +34,16 @@ footer {
 // Post list
 // -------------------------
 
+.newpost {
+  margin-bottom: 5px;
+  background-color: darken($post-background-color, 2.5%);
+  border-style: solid;
+  border-width: 1px;
+  border-color: $darker;
+  padding: 15px;
+  border-radius: 5px;
+}
+
 .post-list {
   padding: 0;
   list-style: none;
@@ -40,8 +54,11 @@ footer {
   margin-bottom: 5px;
   padding: 10px;
   border-radius: 5px;
-  background-color: #f5f8fa;
-  //background-color: #f5f5f5;
+  background-color: $post-background-color;
+
+  &:hover {
+    background-color: lighten($post-background-color, 1%);
+  }
 }
 
 .post-list > li > pre {
@@ -57,13 +74,6 @@ footer {
 textarea {
   resize: vertical;
 }
-
-.newpost-input-well {
-  margin-bottom: 5px;
-  background-color: #f5f8fa;
-  //background-color: #f5f5f5;
-}
-
 
 // Navbar
 // -------------------------
