@@ -20,14 +20,8 @@ block content
                form(method='post')
                   .form-group
                      textarea.form-control(rows='4' name='content')
-                  input.btn.btn-default(type='submit' value='Send post' formaction='/api/posts')
+                  input.btn.btn-primary(type='submit' value='Chirp!' formaction='/api/posts')
             else
                h4.text-center <a href="/auth/login">Log in</a> or <a href="/auth/signup">create a new account</a> and begin posting!
-         ul.post-list
-            each post in posts
-               li
-                  h4
-                     a(href='/users/'+'#{post.author._id}') #{post.author.username}
-                     small  #{moment(post.createdAt).fromNow()}
-                  p #{post.content}
-                  pre #{JSON.stringify(post, null, 2)}
+         
+         include partials/postfeed

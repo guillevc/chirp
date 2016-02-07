@@ -1,0 +1,8 @@
+ul.post-list
+   each post in posts
+      li
+         h4
+            a(href='/users/'+'#{post.author.username}') #{post.author.username}
+            small  #{moment(post.createdAt).fromNow()}
+         p #{post.content}
+         pre #{JSON.stringify(post, null, 2)}

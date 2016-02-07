@@ -74,10 +74,10 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * User data to req.locals and load routes
  */
- app.use((req, res, next) => {
-   res.locals.user = req.user;
-   next();
- });
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 app.use(require('./routes'));
 
 /**

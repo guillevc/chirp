@@ -1,7 +1,6 @@
 'use strict';
 
 const Post = require('../models/post');
-const User = require('../models/user');
 
 /**
  * Router mounted on '/'.
@@ -11,6 +10,7 @@ const router = require('express').Router();
 
 router.use('/auth', require('./auth'));
 router.use('/api', require('./api'));
+router.use('/users', require('./users'));
 
 
 /**
@@ -20,14 +20,12 @@ router.use('/api', require('./api'));
 router.get('/', (req, res, next) => {
   Post.find()
     .sort('-createdAt')
+    .populate('author', 'username')
     .exec((err, posts) => {
       if (err) return next(err);
-      User.populate(posts, {path: 'author'}, (err, posts) => {
-        if (err) return next(err);
-        res.render('home', {
-          posts: posts,
-          moment: require('moment')
-        });
+      res.render('home', {
+        posts: posts,
+        moment: require('moment')
     });
   });
 });

@@ -17,29 +17,19 @@ const userSchema = new mongoose.Schema({
     minlength: 4,
     select: false
   },
+  profile: {
+    fullname: String,
+    location: String,
+    website: String,
+    gender: {
+      type: String,
+      enum: ['male', 'female']
+    },
+  },
   createdAt: {
     type: Date,
     default: Date.now
   },
-  profile: {
-    fullname: {
-      type: String,
-      default: ''
-    },
-    gender: {
-      type: String,
-      enum: ['male', 'female'],
-      default: 'male'
-    },
-    location: {
-      type: String,
-      default: ''
-    },
-    website: {
-      type: String,
-      default: ''
-    },
-  }
 });
 
 /**
