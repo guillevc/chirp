@@ -50,7 +50,8 @@ app.set('view engine', 'jade');
 app.use(sass({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  sourceMap: true
+  sourceMap: true,
+  debug: true,
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
