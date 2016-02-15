@@ -4,19 +4,19 @@
 require('dotenv').load({ path: '.env' });
 
 const path = require('path');
+const express = require('express');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo/es5')(session);
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const express = require('express');
-const morgan = require('morgan');
-const session = require('express-session');
 const methodOverride = require('method-override');
-//const validator = require('express-validator');
+const morgan = require('morgan');
 const favicon = require('serve-favicon');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const MongoStore = require('connect-mongo/es5')(session);
 const sass = require('node-sass-middleware');
-//const compression = require('compression');
+const compression = require('compression');
+//const validator = require('express-validator');
 //const csrf = require('csurf');
 const config = require('./config/vars');
 
@@ -42,16 +42,15 @@ const app = express();
 /**
  * Express configuration.
  */
-app.use(morgan('dev'));
-//if (config.env === 'development') app.use(morgan('dev'));
+if (config.env === 'development') app.use(morgan('dev'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-//app.use(compression());
+app.use(compression());
 app.use(sass({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true,
-  debug: true,
+  debug: false,
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
